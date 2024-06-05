@@ -1,4 +1,4 @@
-import { Link, Stack } from '@mui/material';
+import { Avatar, Link, Stack } from '@mui/material';
 import { IHotelItem } from '../data/type';
 
 type Props = {
@@ -7,5 +7,5 @@ type Props = {
 export default function Image({ hotel }: Props) {
   const imageUrl = hotel.property.previewImage.url;
 
-  return <a href={imageUrl}></a>;
+  return <Avatar alt={hotel.property.previewImage.caption} src={imageUrl} sx={{ width: '150px', height: '150px', objectFit: 'cover', borderRadius: '2px' }} />;
 }

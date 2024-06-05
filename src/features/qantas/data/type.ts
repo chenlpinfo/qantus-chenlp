@@ -42,7 +42,7 @@ export interface IHotelItem {
       amount: number;
       currency: string;
     };
-    savings: any;
+    savings?: any;
     cancellationOption: {
       cancellationType: CANCELLATION_TYPE;
     };
