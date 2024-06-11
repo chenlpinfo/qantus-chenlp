@@ -1,7 +1,7 @@
 'use client';
 
 import { useGetQantasData } from '../data/useGetQantasData';
-import { Stack } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 import { IHotelItem } from '../data/type';
 
 type Props = {
@@ -11,10 +11,25 @@ type Props = {
 export default function HotelOffer({ hotel }: Props) {
   return (
     <>
-      <Stack direction='column' spacing={2}>
-        <div className='text-sm text-right text-blue-600'>1 night total(AUD)</div>
-        <div>${hotel.offer.displayPrice.amount}</div>
-        {hotel.offer.savings ? <div>Save ${hotel.offer.savings.amount}</div> : <div>&nbsp;</div>}
+      <Stack justifyContent='end' style={{ height: '100%' }}>
+        <Stack justifyContent='center'>
+          <span className='text-sm text-right'>1 night total({hotel.offer.displayPrice.currency})</span>
+        </Stack>
+        <Stack direction='row' justifyContent='end'>
+          $
+          <Typography variant='h4' className='font-medium'>
+            {hotel.offer.displayPrice.amount}
+          </Typography>
+        </Stack>
+
+        {hotel.offer.savings ? (
+          <Stack direction='row' justifyContent='end' className='text-red-600 font-medium text-lg'>
+            Save ${hotel.offer.savings.amount}
+            <span className='mt-[-3px]'>~</span>
+          </Stack>
+        ) : (
+          <div>&nbsp;</div>
+        )}
       </Stack>
     </>
   );

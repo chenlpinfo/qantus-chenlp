@@ -19,13 +19,13 @@ const StyledRating = styled(Rating)({
 export default function Property({ hotel }: Props) {
   return (
     <Stack direction='column' spacing={2}>
-      <Stack direction='row' spacing={2}>
+      <Stack direction='row' spacing={2} className='font-bold'>
         {hotel.property.title}
         <HotelRating hotel={hotel} />
       </Stack>
-      <div>{hotel.property.address}</div>
-      <div>{hotel.offer.name}</div>
-      {hotel.offer.cancellationOption.cancellationType.includes('FREE_CANCELLATION') ? <div>Free cancellation</div> : <div>&nbsp;</div>}
+      <div className='text-xs text-slate-400'>{hotel.property.address}</div>
+      <div className='text-rose-500 text-xs font-medium underline'>{hotel.offer.name}</div>
+      {hotel.offer.cancellationOption.cancellationType.includes('FREE_CANCELLATION') ? <div className='text-xs text-emerald-600'>Free cancellation</div> : <div>&nbsp;</div>}
     </Stack>
   );
 }

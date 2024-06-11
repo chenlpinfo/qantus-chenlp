@@ -1,9 +1,9 @@
-import Dataview from '@/src/features/qantas/components/Dataview';
+import HotelView from '@/src/features/qantas/components/HotelView';
 
 export default function QantasPage() {
   return (
     <>
-      <Dataview />
+      <HotelView />
     </>
   );
 }
