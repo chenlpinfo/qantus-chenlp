@@ -1,14 +1,18 @@
 'use client';
 import { Grid, Stack, FormControl, Select, MenuItem, SelectChangeEvent } from '@mui/material';
 import { IHotelItem } from '../data/type';
-import { useEffect, useState } from 'react';
 import { SORT_BY } from '../data/type';
+import { Dispatch, SetStateAction } from 'react';
+import { useEffect, useState } from 'react';
 
 type Props = {
   data: IHotelItem[];
+  setQantasData: Dispatch<SetStateAction<IHotelItem[]>>;
+  // sortBy: string;
+  // setSortBy: Dispatch<SetStateAction<string>>;
 };
 
-export default function ActionBar({ data }: Props) {
+export default function ActionBar({ data, setQantasData }: Props) {
   const [sortBy, setSortBy] = useState<string>('');
 
   function handleChange(event: SelectChangeEvent) {
@@ -32,7 +36,8 @@ export default function ActionBar({ data }: Props) {
         newData = [...data.sort((a, b) => b.property.title.localeCompare(a.property.title))];
         break;
     }
-  }, [data, sortBy]);
+    setQantasData(newData);
+  }, [sortBy]);
 
   return (
     <Grid container justifyContent='space-between' alignItems='center'>

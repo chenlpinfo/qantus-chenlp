@@ -7,13 +7,13 @@ import QantasLogo from './QantasLogo';
 import { useGetQantasData } from '../data/useGetQantasData';
 
 export default function HotelView() {
-  const { qantasData } = useGetQantasData();
+  const { qantasData, setQantasData } = useGetQantasData();
 
   return (
     <>
       <Stack spacing={2}>
         <QantasLogo />
-        <ActionBar data={qantasData} />
+        <ActionBar data={qantasData} setQantasData={setQantasData} />
       </Stack>
       <Box sx={{ margin: 2 }}>
         {qantasData.map((hotel, key) => {
