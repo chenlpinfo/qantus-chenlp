@@ -19,7 +19,7 @@ const StyledRating = styled(Rating)({
 export default function Property({ hotel }: Props) {
   return (
     <Stack direction='column' spacing={2}>
-      <Stack direction='row' spacing={2} className='font-bold'>
+      <Stack direction='row' spacing={2} className='font-bold' alignItems='center'>
         {hotel.property.title}
         <HotelRating hotel={hotel} />
       </Stack>

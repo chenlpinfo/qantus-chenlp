@@ -1,6 +1,7 @@
 import { Rating, styled } from '@mui/material';
 import { IHotelItem } from '../data/type';
 import CircleIcon from '@mui/icons-material/Circle';
+import { yellow } from '@mui/material/colors';
 
 type Props = {
   hotel: IHotelItem;
@@ -9,16 +10,16 @@ type Props = {
 export default function HotelRating({ hotel }: Props) {
   const StyledRating = styled(Rating)({
     '& .MuiRating-iconFilled': {
-      color: '#ff6d75',
+      color: yellow,
     },
-    '& .MuiRating-iconHover': {
-      color: '#ff3d47',
-    },
+    // '& .MuiRating-iconHover': {
+    //   color: '#ff3d47',
+    // },
   });
   return (
     <>
       {hotel.property.rating.ratingType.includes('star') ? (
-        <Rating name='size-small' defaultValue={hotel.property.rating.ratingValue} size='small' />
+        <Rating name='size-small' defaultValue={hotel.property.rating.ratingValue} size='small' color='disabled' readOnly />
       ) : (
         <StyledRating
           size='small'
@@ -26,8 +27,10 @@ export default function HotelRating({ hotel }: Props) {
           defaultValue={hotel.property.rating.ratingValue}
           getLabelText={(value: number) => `${value} Heart${value !== 1 ? 's' : ''}`}
           precision={0.5}
-          icon={<CircleIcon fontSize='inherit' />}
-          emptyIcon={<CircleIcon fontSize='inherit' />}
+          icon={<CircleIcon style={{ fontSize: 13 }} />}
+          emptyIcon={<CircleIcon style={{ fontSize: 13 }} />}
+          color='disabled'
+          readOnly
         />
       )}
     </>

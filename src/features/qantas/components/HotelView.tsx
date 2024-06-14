@@ -10,7 +10,7 @@ export default function HotelView() {
   const { qantasData, setQantasData } = useGetQantasData();
 
   return (
-    <>
+    <Stack direction='column' spacing={2}>
       <Stack spacing={2}>
         <QantasLogo />
         <ActionBar data={qantasData} setQantasData={setQantasData} />
@@ -26,6 +26,6 @@ export default function HotelView() {
           );
         })}
       </Box>
-    </>
+    </Stack>
   );
 }
