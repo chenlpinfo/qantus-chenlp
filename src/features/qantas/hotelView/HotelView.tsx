@@ -1,9 +1,9 @@
 'use client';
 
 import { Box, Stack } from '@mui/material';
-import ActionBar from './ActionBar';
-import HotelList from './HotelList';
-import QantasLogo from './QantasLogo';
+import ActionBar from './components/ActionBar';
+import HotelList from '../hotelList/HotelList';
+import QantasLogo from './components/QantasLogo';
 import { useGetQantasData } from '../data/useGetQantasData';
 
 export default function HotelView() {

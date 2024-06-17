@@ -1,5 +1,5 @@
 import { Rating, Stack, styled } from '@mui/material';
-import { IHotelItem } from '../data/type';
+import { IHotelItem } from '../../data/type';
 import HotelRating from './HotelRating';
 
 type Props = {

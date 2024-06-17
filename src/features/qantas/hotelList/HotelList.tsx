@@ -1,8 +1,8 @@
-import HotelOffer from './HotelOffer';
+import HotelOffer from './components/HotelOffer';
 import { Box, Grid, Stack } from '@mui/material';
-import Property from './HotelProperty';
 import { IHotelItem } from '../data/type';
-import HotelImage from './HotelImage';
+import HotelImage from './components/HotelImage';
+import HotelProperty from './components/HotelProperty';
 
 type Props = {
   hotel: IHotelItem;
@@ -18,7 +18,7 @@ export default function HotelList({ hotel }: Props) {
           </Grid>
 
           <Grid xs={6} sx={{ borderTop: 1, borderColor: 'grey.500' }}>
-            <Property hotel={hotel} />
+            <HotelProperty hotel={hotel} />
           </Grid>
           <Grid xs sx={{ borderTop: 1, borderColor: 'grey.500' }}>
             <HotelOffer hotel={hotel} />

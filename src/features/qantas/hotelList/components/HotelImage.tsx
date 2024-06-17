@@ -1,5 +1,5 @@
 import { Avatar } from '@mui/material';
-import { IHotelItem } from '../data/type';
+import { IHotelItem } from '../../data/type';
 
 type Props = {
   hotel: IHotelItem;

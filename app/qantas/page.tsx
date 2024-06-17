@@ -1,4 +1,4 @@
-import HotelView from '@/src/features/qantas/components/HotelView';
+import HotelView from '@/src/features/qantas/hotelView/HotelView';
 
 export default function QantasPage() {
   return (

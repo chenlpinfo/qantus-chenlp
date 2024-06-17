@@ -1,5 +1,5 @@
 import { Rating, styled } from '@mui/material';
-import { IHotelItem } from '../data/type';
+import { IHotelItem } from '../../data/type';
 import CircleIcon from '@mui/icons-material/Circle';
 import { yellow } from '@mui/material/colors';
 

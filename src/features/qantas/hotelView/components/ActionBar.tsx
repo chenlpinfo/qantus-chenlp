@@ -1,7 +1,7 @@
 'use client';
 import { Grid, Stack, FormControl, Select, MenuItem, SelectChangeEvent } from '@mui/material';
-import { IHotelItem } from '../data/type';
-import { SORT_BY } from '../data/type';
+import { IHotelItem } from '../../data/type';
+import { SORT_BY } from '../../data/type';
 import { Dispatch, SetStateAction } from 'react';
 import { useEffect, useState } from 'react';
 

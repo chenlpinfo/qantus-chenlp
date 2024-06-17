@@ -1,7 +1,7 @@
 'use client';
 
 import { Stack, Typography } from '@mui/material';
-import { IHotelItem } from '../data/type';
+import { IHotelItem } from '../../data/type';
 
 type Props = {
   hotel: IHotelItem;
