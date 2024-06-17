@@ -1,6 +1,5 @@
 import { Rating, Stack, styled } from '@mui/material';
 import { IHotelItem } from '../data/type';
-import CircleIcon from '@mui/icons-material/Circle';
 import HotelRating from './HotelRating';
 
 type Props = {
@@ -16,7 +15,7 @@ const StyledRating = styled(Rating)({
   },
 });
 
-export default function Property({ hotel }: Props) {
+export default function HotelProperty({ hotel }: Props) {
   return (
     <Stack direction='column' spacing={2}>
       <Stack direction='row' spacing={2} className='font-bold' alignItems='center'>

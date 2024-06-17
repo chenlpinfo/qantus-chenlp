@@ -1,9 +1,8 @@
-import { useGetQantasData } from '../data/useGetQantasData';
 import HotelOffer from './HotelOffer';
 import { Box, Grid, Stack } from '@mui/material';
-import Property from './Property';
-import Image from './Image';
+import Property from './HotelProperty';
 import { IHotelItem } from '../data/type';
+import HotelImage from './HotelImage';
 
 type Props = {
   hotel: IHotelItem;
@@ -15,7 +14,7 @@ export default function HotelList({ hotel }: Props) {
       <Box sx={{ flexGrow: 1, margin: 2 }}>
         <Grid container spacing={3}>
           <Grid xs>
-            <Image hotel={hotel} />
+            <HotelImage hotel={hotel} />
           </Grid>
 
           <Grid xs={6} sx={{ borderTop: 1, borderColor: 'grey.500' }}>

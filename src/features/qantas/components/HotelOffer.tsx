@@ -1,6 +1,5 @@
 'use client';
 
-import { useGetQantasData } from '../data/useGetQantasData';
 import { Stack, Typography } from '@mui/material';
 import { IHotelItem } from '../data/type';
 
