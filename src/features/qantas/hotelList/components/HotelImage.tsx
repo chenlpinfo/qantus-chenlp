@@ -7,5 +7,10 @@ type Props = {
 export default function HotelImage({ hotel }: Props) {
   const imageUrl = hotel.property.previewImage.url;
 
-  return <Avatar alt={hotel.property.previewImage.caption} src={imageUrl} sx={{ width: '150px', height: '150px', objectFit: 'cover', borderRadius: '2px' }} />;
+  return (
+    <>
+      <Avatar alt={hotel.property.previewImage.caption} src={imageUrl} title={hotel.offer.promotion.title} sx={{ width: '150px', height: '150px', objectFit: 'cover', borderRadius: '2px' }} />
+      <div>{hotel.offer.promotion.title}</div>
+    </>
+  );
 }

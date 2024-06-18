@@ -22,6 +22,9 @@ export const Nav = () => {
       <Link className={`${styles.link} ${pathname === '/qantas' ? styles.active : ''}`} href='/qantas'>
         Qantas
       </Link>
+      <Link className={`${styles.link} ${pathname === '/carousel' ? styles.active : ''}`} href='/carousel'>
+        Carousel
+      </Link>
     </nav>
   );
 };
