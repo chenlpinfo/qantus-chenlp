@@ -15,6 +15,11 @@ export default function CarouselPage() {
 
   useEffect(() => {
     getCouselData();
+
+    window.addEventListener('keydown', handleOnKeyPress);
+    return () => {
+      window.removeEventListener('keydown', handleOnKeyPress);
+    };
   }, []);
 
   async function getCouselData() {
@@ -31,13 +36,25 @@ export default function CarouselPage() {
   const indexOfLastCarousel = currentIndex * carouselPerPage;
   const indexOfFirstCarousel = indexOfLastCarousel - carouselPerPage;
 
-  const currentCarousel = carouselData.slice(indexOfFirstCarousel, indexOfLastCarousel);
+  const currentCarousel = carouselData; //.slice(indexOfFirstCarousel, indexOfLastCarousel);
+
+  function handleOnKeyPress(event: any) {
+    // debugger;
+    if (event.key === 'ArrowLeft') {
+      setCurrentIndex((index) => index - 1);
+      //user scrollintoview
+    } else if (event.key === 'ArrowRight') {
+      setCurrentIndex((i) => i + 1);
+    } else if (event.key === 'enter') {
+      // setCurrentIndex(currentIndex-1)
+    }
+  }
 
   return (
     <>
-      <Stack direction='row' spacing={2} sx={{ height: 350, width: 250 }}>
+      <Stack direction='row' spacing={2} sx={{ height: 350, width: '100vw', overflow: 'hidden' }}>
         {currentCarousel.map((tv, index) => {
-          return <TvImage tv={tv} key={tv.id} />;
+          return <TvImage tv={tv} key={tv.id} isSelected={currentIndex === index} />;
         })}
       </Stack>
       <p>{message}</p>
