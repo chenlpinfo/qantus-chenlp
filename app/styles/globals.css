@@ -18,12 +18,3 @@ a {
 * {
   box-sizing: border-box;
 }
-
-.hovered-image {
-  border: '3px solid blue';
-  padding: '3px';
-}
-
-.unHovered-image {
-  padding: '3px';
-}

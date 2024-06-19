@@ -4,12 +4,12 @@ import { useEffect, useState } from 'react';
 import { ICarouselItem } from './data/type';
 import { Stack } from '@mui/system';
 import Image from 'next/image';
+import TvImage from './components/TvImage';
 
 export default function CarouselPage() {
   const [carouselData, setCarouselData] = useState<ICarouselItem[]>([]);
   const [currentIndex, setCurrentIndex] = useState<number>(1);
   const [message, setMessage] = useState('');
-  const [isHovered, setIsHovered] = useState(false);
 
   const carouselPerPage = 6;
 
@@ -33,38 +33,11 @@ export default function CarouselPage() {
 
   const currentCarousel = carouselData.slice(indexOfFirstCarousel, indexOfLastCarousel);
 
-  const handleMouseEnter = () => {
-    setMessage('Mouse entered the image');
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setMessage('Mouse left the image');
-    setIsHovered(false);
-  };
-
-  const handleClick = () => {
-    setMessage('Image clicked');
-  };
-
   return (
     <>
       <Stack direction='row' spacing={2} sx={{ height: 350, width: 250 }}>
-        {currentCarousel.map((carousel, index) => {
-          return (
-            <Image
-              alt={carousel.title}
-              src={carousel.image}
-              title={carousel.title}
-              key={carousel.id}
-              width={500}
-              height={500}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              onClick={handleClick}
-              className={isHovered ? 'hovered-image' : 'unHovered-image'}
-            />
-          );
+        {currentCarousel.map((tv, index) => {
+          return <TvImage tv={tv} key={tv.id} />;
         })}
       </Stack>
       <p>{message}</p>
