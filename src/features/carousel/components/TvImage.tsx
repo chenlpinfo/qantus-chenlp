@@ -1,9 +1,11 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, Dispatch } from 'react';
 import { ICarouselItem } from '../data/type';
-
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { useDispatch } from 'react-redux';
+import { sliceCarouselActions } from '@/lib/features/carousel/carouselSlice';
 
 type Props = {
   tv: ICarouselItem;
@@ -11,23 +13,10 @@ type Props = {
 };
 
 export default function TvImage({ tv, isSelected }: Props) {
+  const router = useRouter();
+  const dispatch = useDispatch();
+
   const imageRef = useRef<any>(null);
-  const [message, setMessage] = useState('');
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseEnter = () => {
-    setMessage('Mouse entered the image');
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setMessage('Mouse left the image');
-    setIsHovered(false);
-  };
-
-  const handleClick = () => {
-    setMessage('Image clicked');
-  };
 
   const style = {
     border: isSelected ? '3px solid blue' : '',
@@ -40,19 +29,15 @@ export default function TvImage({ tv, isSelected }: Props) {
     }
   }, [isSelected]);
 
+  function handleClickTv() {
+    console.log('Tv');
+    dispatch(sliceCarouselActions.setSelectedTv(tv));
+    router.push('/program');
+  }
+
   return (
-    <Image
-      ref={imageRef}
-      style={style}
-      alt={tv.title}
-      src={tv.image}
-      title={tv.title}
-      key={tv.id}
-      width={500}
-      height={500}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onClick={handleClick}
-    />
+    <>
+      <Image ref={imageRef} style={style} alt={tv.title} src={tv.image} title={tv.title} key={tv.id} width={500} height={500} onClick={handleClickTv} />
+    </>
   );
 }
