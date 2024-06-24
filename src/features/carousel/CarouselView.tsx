@@ -4,10 +4,15 @@ import { Stack } from '@mui/system';
 import { useEffect, useState } from 'react';
 import TvImage from './components/TvImage';
 import { ICarouselItem } from './data/type';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCurrentIndex, selectSelectedTv, sliceCarouselActions } from '@/lib/features/carousel/carouselSlice';
 
 export default function CarouselPage() {
   const [carouselData, setCarouselData] = useState<ICarouselItem[]>([]);
-  const [currentIndex, setCurrentIndex] = useState<number>(1);
+  // const [currentIndex, setCurrentIndex] = useState<number>(1);
+  const dispatch = useDispatch();
+
+  const currentIndex = useSelector(selectCurrentIndex);
 
   const carouselPerPage = 6;
 
@@ -39,10 +44,14 @@ export default function CarouselPage() {
   function handleOnKeyPress(event: any) {
     // debugger;
     if (event.key === 'ArrowLeft') {
-      setCurrentIndex((index) => index - 1);
+      dispatch(sliceCarouselActions.setCurrentIndex((index: number) => index - 1));
+
+      // setCurrentIndex((index) => index - 1);
       //user scrollIntoView
     } else if (event.key === 'ArrowRight') {
-      setCurrentIndex((i) => i + 1);
+      dispatch(sliceCarouselActions.setCurrentIndex((index: number) => index + 1));
+
+      // setCurrentIndex((i) => i + 1);
     } else if (event.key === 'enter') {
       // setCurrentIndex(currentIndex-1)
     }
@@ -50,9 +59,10 @@ export default function CarouselPage() {
 
   return (
     <>
+      currentIndex:{currentIndex}
       <Stack direction='row' spacing={2} sx={{ height: 350, width: '100vw', overflow: 'hidden' }}>
         {currentCarousel.map((tv, index) => {
-          return <TvImage tv={tv} key={tv.id} isSelected={currentIndex === index} />;
+          return <TvImage tv={tv} key={tv.id} isSelected={currentIndex === index} index={index} />;
         })}
       </Stack>
     </>

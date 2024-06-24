@@ -1,20 +1,24 @@
 'use client';
 
-import { useEffect, useRef, Dispatch } from 'react';
-import { ICarouselItem } from '../data/type';
+import { sliceCarouselActions } from '@/lib/features/carousel/carouselSlice';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { sliceCarouselActions } from '@/lib/features/carousel/carouselSlice';
+import { ICarouselItem } from '../data/type';
 
 type Props = {
   tv: ICarouselItem;
   isSelected: boolean;
+  index: number;
+  // setCurrentIndex: Dispatch<SetStateAction<number>>;
 };
 
-export default function TvImage({ tv, isSelected }: Props) {
+export default function TvImage({ tv, isSelected, index }: Props) {
   const router = useRouter();
   const dispatch = useDispatch();
+
+  // const currentIndex = useSelector(selectCurrentIndex);
 
   const imageRef = useRef<any>(null);
 
@@ -32,6 +36,9 @@ export default function TvImage({ tv, isSelected }: Props) {
   function handleClickTv() {
     console.log('Tv');
     dispatch(sliceCarouselActions.setSelectedTv(tv));
+    dispatch(sliceCarouselActions.setCurrentIndex(index));
+
+    // setCurrentIndex(index);
     router.push('/program');
   }
 
