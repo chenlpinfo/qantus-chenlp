@@ -11,14 +11,11 @@ type Props = {
   tv: ICarouselItem;
   isSelected: boolean;
   index: number;
-  // setCurrentIndex: Dispatch<SetStateAction<number>>;
 };
 
 export default function TvImage({ tv, isSelected, index }: Props) {
   const router = useRouter();
   const dispatch = useDispatch();
-
-  // const currentIndex = useSelector(selectCurrentIndex);
 
   const imageRef = useRef<any>(null);
 
@@ -38,7 +35,6 @@ export default function TvImage({ tv, isSelected, index }: Props) {
     dispatch(sliceCarouselActions.setSelectedTv(tv));
     dispatch(sliceCarouselActions.setCurrentIndex(index));
 
-    // setCurrentIndex(index);
     router.push('/program');
   }
 

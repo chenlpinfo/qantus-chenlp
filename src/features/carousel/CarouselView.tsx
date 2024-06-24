@@ -5,25 +5,26 @@ import { useEffect, useState } from 'react';
 import TvImage from './components/TvImage';
 import { ICarouselItem } from './data/type';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCurrentIndex, selectSelectedTv, sliceCarouselActions } from '@/lib/features/carousel/carouselSlice';
+import { selectCurrentIndex, sliceCarouselActions } from '@/lib/features/carousel/carouselSlice';
+import { useRouter } from 'next/navigation';
 
 export default function CarouselPage() {
   const [carouselData, setCarouselData] = useState<ICarouselItem[]>([]);
-  // const [currentIndex, setCurrentIndex] = useState<number>(1);
+  const router = useRouter();
   const dispatch = useDispatch();
 
   const currentIndex = useSelector(selectCurrentIndex);
 
-  const carouselPerPage = 6;
-
   useEffect(() => {
     getCarouselData();
+  }, []);
 
+  useEffect(() => {
     window.addEventListener('keydown', handleOnKeyPress);
     return () => {
       window.removeEventListener('keydown', handleOnKeyPress);
     };
-  }, []);
+  }, [currentIndex]);
 
   async function getCarouselData() {
     try {
@@ -36,23 +37,23 @@ export default function CarouselPage() {
     }
   }
 
-  const indexOfLastCarousel = currentIndex * carouselPerPage;
-  const indexOfFirstCarousel = indexOfLastCarousel - carouselPerPage;
-
-  const currentCarousel = carouselData; //.slice(indexOfFirstCarousel, indexOfLastCarousel);
+  const currentCarousel = carouselData;
 
   function handleOnKeyPress(event: any) {
-    // debugger;
     if (event.key === 'ArrowLeft') {
-      dispatch(sliceCarouselActions.setCurrentIndex((index: number) => index - 1));
-
-      // setCurrentIndex((index) => index - 1);
-      //user scrollIntoView
+      let newIndex = currentIndex - 1;
+      if (newIndex < 0) {
+        newIndex = 0;
+      }
+      dispatch(sliceCarouselActions.setCurrentIndex(newIndex));
     } else if (event.key === 'ArrowRight') {
-      dispatch(sliceCarouselActions.setCurrentIndex((index: number) => index + 1));
-
-      // setCurrentIndex((i) => i + 1);
+      let newIndex = currentIndex + 1;
+      if (newIndex > currentCarousel.length - 1) {
+        newIndex = currentCarousel.length - 1;
+      }
+      dispatch(sliceCarouselActions.setCurrentIndex(newIndex));
     } else if (event.key === 'enter') {
+      router.push('/program');
       // setCurrentIndex(currentIndex-1)
     }
   }
