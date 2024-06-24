@@ -2,13 +2,13 @@ import { createAppSlice } from '@/lib/createAppSlice';
 import { ICarouselItem } from '@/src/features/carousel/data/type';
 
 export interface CarouselSliceState {
-  selectedTv: ICarouselItem | undefined;
+  carouselData: ICarouselItem[];
 
   currentIndex: number;
 }
 
 const initialState: CarouselSliceState = {
-  selectedTv: undefined,
+  carouselData: [],
   currentIndex: 1,
 };
 
@@ -17,8 +17,8 @@ export const carouselSlice = createAppSlice({
   initialState,
 
   reducers: {
-    setSelectedTv: (sliceState, action) => {
-      sliceState.selectedTv = action.payload;
+    setCarouselData: (sliceState, action) => {
+      sliceState.carouselData = action.payload;
     },
     setCurrentIndex: (sliceState, action) => {
       sliceState.currentIndex = action.payload;
@@ -27,7 +27,7 @@ export const carouselSlice = createAppSlice({
 });
 export const sliceCarouselActions = carouselSlice.actions;
 
-export const selectSelectedTv = (state: any): ICarouselItem => state.carouselSlice?.selectedTv;
+export const selectCarouselData = (state: any): ICarouselItem[] => state.carouselSlice?.carouselData;
 export const selectCurrentIndex = (state: any): number => state.carouselSlice?.currentIndex;
 
 export default carouselSlice.reducer;

@@ -32,7 +32,6 @@ export default function TvImage({ tv, isSelected, index }: Props) {
 
   function handleClickTv() {
     console.log('Tv');
-    dispatch(sliceCarouselActions.setSelectedTv(tv));
     dispatch(sliceCarouselActions.setCurrentIndex(index));
 
     router.push('/program');

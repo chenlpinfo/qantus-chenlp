@@ -1,14 +1,16 @@
 'use client';
 
-import { selectSelectedTv } from '@/lib/features/carousel/carouselSlice';
 import { Button, Stack } from '@mui/material';
 import { useSelector } from 'react-redux';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { selectCarouselData, selectCurrentIndex } from '@/lib/features/carousel/carouselSlice';
 
 export default function TvPage() {
   const router = useRouter();
-  const selectedTv = useSelector(selectSelectedTv);
+  const carouselData = useSelector(selectCarouselData);
+  const currentIndex = useSelector(selectCurrentIndex);
+  const selectedTv = carouselData[currentIndex];
 
   function handleBack() {
     router.push('/carousel');
