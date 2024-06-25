@@ -1,6 +1,6 @@
 'use client';
 
-import { selectCurrentIndex, sliceCarouselActions } from '@/lib/features/carousel/carouselSlice';
+import { selectCarouselData, selectCurrentIndex, sliceCarouselActions } from '@/lib/features/carousel/carouselSlice';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef } from 'react';
@@ -16,6 +16,8 @@ export default function TvImage({ tv, index }: Props) {
   const router = useRouter();
   const dispatch = useDispatch();
   const currentIndex = useSelector(selectCurrentIndex);
+  const carouselData = useSelector(selectCarouselData);
+
   const isSelected = currentIndex === index;
 
   const imageRef = useRef<any>(null);
@@ -35,9 +37,12 @@ export default function TvImage({ tv, index }: Props) {
     router.push('/program');
   }
 
-  return (
-    <>
-      <Image ref={imageRef} style={style} alt={tv.title} src={tv.image} title={tv.title} key={tv.id} width={500} height={500} onClick={handleClickTv} />
-    </>
-  );
+  let isVisible;
+  if (currentIndex < 4) {
+    isVisible = index >= 0 && index <= 5;
+  } else if (currentIndex > 3) {
+    isVisible = index >= currentIndex - 3 && index <= currentIndex + 2;
+  }
+
+  return <>{isVisible && <Image ref={imageRef} style={style} alt={tv.title} src={tv.image} title={tv.title} key={tv.id} width={500} height={500} onClick={handleClickTv} />}</>;
 }
