@@ -25,6 +25,9 @@ export const Nav = () => {
       <Link className={`${styles.link} ${pathname === '/carousel' ? styles.active : ''}`} href='/carousel'>
         Carousel
       </Link>
+      <Link className={`${styles.link} ${pathname === '/ticket' ? styles.active : ''}`} href='/ticket'>
+        Ticket
+      </Link>
     </nav>
   );
 };
