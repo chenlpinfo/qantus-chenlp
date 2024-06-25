@@ -9,9 +9,6 @@ import { selectCarouselData, selectCurrentIndex, sliceCarouselActions } from '@/
 import { useRouter } from 'next/navigation';
 
 export default function CarouselPage() {
-  const [carouselInDom, setCarouselInDom] = useState<ICarouselItem[]>([]);
-  const [firstOfIndex, setFirstOfIndex] = useState<number>(0);
-
   const router = useRouter();
   const dispatch = useDispatch();
 
@@ -35,7 +32,6 @@ export default function CarouselPage() {
       const result = await response.json();
       console.log('result', result);
       dispatch(sliceCarouselActions.setCarouselData(result));
-      setCarouselInDom(result.slice(firstOfIndex, firstOfIndex + 6));
     } catch (error) {
       console.log(error);
     }
@@ -63,8 +59,8 @@ export default function CarouselPage() {
     <>
       currentIndex:{currentIndex}
       <Stack direction='row' spacing={2} sx={{ height: 350, width: '100vw', overflow: 'hidden' }}>
-        {carouselInDom.map((tv, index) => {
-          return <TvImage tv={tv} key={tv.id} isSelected={currentIndex === index} index={index} />;
+        {carouselData.map((tv, index) => {
+          return <TvImage tv={tv} key={tv.id}  index={index} />;
         })}
       </Stack>
     </>
