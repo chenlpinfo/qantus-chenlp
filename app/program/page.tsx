@@ -1,4 +1,4 @@
-import TvPage from '@/src/features/program/TvPage';
+import TvPage from '@/src/features/carousel/program/TvPage';
 
 export default function ProgramPage() {
   return <TvPage />;

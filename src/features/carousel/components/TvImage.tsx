@@ -1,9 +1,9 @@
 'use client';
 
-import { selectCarouselData, selectCurrentIndex, sliceCarouselActions } from '@/lib/features/carousel/carouselSlice';
+import {  selectCurrentIndex, sliceCarouselActions } from '@/lib/features/carousel/carouselSlice';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { useEffect, useRef } from 'react';
+import {  useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ICarouselItem } from '../data/type';
 
@@ -16,7 +16,6 @@ export default function TvImage({ tv, index }: Props) {
   const router = useRouter();
   const dispatch = useDispatch();
   const currentIndex = useSelector(selectCurrentIndex);
-  const carouselData = useSelector(selectCarouselData);
 
   const isSelected = currentIndex === index;
 

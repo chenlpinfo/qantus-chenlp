@@ -60,7 +60,7 @@ export default function CarouselPage() {
       currentIndex:{currentIndex}
       <Stack direction='row' spacing={2} sx={{ height: 350, width: '100vw', overflow: 'hidden' }}>
         {carouselData.map((tv, index) => {
-          return <TvImage tv={tv} key={tv.id}  index={index} />;
+          return <TvImage tv={tv} key={tv.id} index={index} />;
         })}
       </Stack>
     </>
