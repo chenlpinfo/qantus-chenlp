@@ -25,8 +25,8 @@ export const Nav = () => {
       <Link className={`${styles.link} ${pathname === '/carousel' ? styles.active : ''}`} href='/carousel'>
         Carousel
       </Link>
-      <Link className={`${styles.link} ${pathname === '/ticket' ? styles.active : ''}`} href='/ticket'>
-        Ticket
+      <Link className={`${styles.link} ${pathname === '/events' ? styles.active : ''}`} href='/events'>
+        Events
       </Link>
     </nav>
   );

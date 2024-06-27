@@ -28,8 +28,10 @@ export interface ITicketEventsData {
   };
   id: string;
   images: IImagesData[];
+  info?: string;
   locale: string;
   name: string;
+  pleaseNote?: string;
   priceRanges: IPriceRanges[];
   products: IProducts[];
 
